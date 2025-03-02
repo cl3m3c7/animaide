@@ -32,6 +32,7 @@ user_scene_range = {}
 global_values = {}
 last_op = None
 
+
 # ---------- Main Tool ------------
 
 
@@ -87,7 +88,7 @@ def magnet_handlers(scene):
 
         for fcurve in getattr(action, 'fcurves', list()):
             if fcurve.data_path.endswith("rotation_mode"):
-                continue   #added exception
+                continue  # added exception
             magnet(context, obj, fcurve)
 
     return
@@ -135,7 +136,7 @@ def get_delta(context, obj, fcurve):
     cur_frame = bpy.context.scene.frame_current
     nla_frame = int(context.object.animation_data.nla_tweak_strip_time_to_scene(cur_frame))
     nla_dif = nla_frame - cur_frame
-    curve_value = fcurve.evaluate(cur_frame-nla_dif)
+    curve_value = fcurve.evaluate(cur_frame - nla_dif)
 
     try:
         prop = obj.path_resolve(fcurve.data_path)
@@ -147,7 +148,10 @@ def get_delta(context, obj, fcurve):
             target = prop[fcurve.array_index]
         except TypeError:
             target = prop
-        return target - curve_value
+        try:
+            return target - curve_value
+        except TypeError:
+            return 0
     else:
         return 0
 
@@ -348,5 +352,3 @@ def get_anim_offset_globals(context, obj):
         curves[fcurve_index]['current_frame'] = values
 
     global_values[obj.name] = curves
-
-
