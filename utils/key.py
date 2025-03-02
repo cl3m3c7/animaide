@@ -30,7 +30,6 @@ def attach_selection_to_fcurve(fcurve, target_fcurve, factor=1.0, is_gradual=Tru
     selected_keys = get_selected_index(fcurve)
 
     for index in selected_keys:
-
         key = fcurve.keyframe_points[index]
 
         attach_to_fcurve(key, key, target_fcurve, factor=factor, is_gradual=is_gradual)
@@ -106,7 +105,7 @@ def some_selected_keys_in_objects(context, objects):
 def add_key(keys, x, y, select=False, index=-1):
     keys.add(1)
     if index == -1:
-        index = len(keys)-1
+        index = len(keys) - 1
     k = keys[index]
     k.select_control_point = select
     k.select_left_handle = select
@@ -127,7 +126,6 @@ def insert_key(keys, x, y, select=False):
 
 
 def set_handle(key, side, delta):
-
     handle = getattr(key, 'handle_%s' % side, None)
     handle_type = getattr(key, 'handle_%s_type' % side, None)
 
@@ -166,7 +164,6 @@ def first_and_last_selected(fcurve, keyframes):
 
 
 def selected_bounding_box(context, objects, keys_selected=True):
-
     most_left = None
     most_right = None
     left_limit = None
@@ -386,13 +383,11 @@ def update_keyframe_points(context):
     if area != 'GRAPH_EDITOR':
         context.area.type = 'GRAPH_EDITOR'
 
-    snap = context.space_data.auto_snap
-    context.space_data.auto_snap = 'NONE'
+    snap = context.scene.tool_settings.use_snap_anim
+    context.scene.tool_settings.use_snap_anim = False
 
     bpy.ops.transform.transform()
 
-    context.space_data.auto_snap = snap
+    context.scene.tool_settings.use_snap_anim = snap
     if area != 'GRAPH_EDITOR':
         context.area.type = area
-
-
