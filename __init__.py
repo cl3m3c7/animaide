@@ -27,7 +27,7 @@ bl_info = {
     "version": (1, 0, 38),
     "blender": (2, 93, 0),
     "location": "Graph Editor - Dope Sheet - Timeline - 3D View - sidebar and menu bar",
-    "warning": "This addon is still in development.",
+    # "warning": "This addon is still in development.",
     "category": "Animation",
     "doc_url": "https://aresdevo.github.io/animaide/",
     "tracker_url": "https://github.com/aresdevo/animaide/issues"
