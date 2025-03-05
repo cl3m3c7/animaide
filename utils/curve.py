@@ -55,9 +55,11 @@ def new(action_group_name, keys_to_add, key_interp='AUTO_CLAMPED', color=(1, 1, 
 
     # bpy.ops.transform.translate(value=(0, 0, 0))
 
+    keys.sort()
+    keys.handles_recalc()
+
     blends_curve.lock = True
     blends_curve.select = True
-    blends_curve.update() # check if I need to add irmita's key function
     # utils.key.update_keyframe_points(context)
 
     return blends_curve
