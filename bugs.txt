@@ -1,1 +1,0 @@
-detect when cancel with MRC button or ESC key and cancel the operation!

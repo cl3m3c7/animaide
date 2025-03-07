@@ -24,13 +24,12 @@ bl_info = {
     "name": "AnimAide",
     "description": "Helpful tools to manipulate keys on f-curves",
     "author": "Ares Deveaux",
-    "version": (1, 0, 38),
-    "blender": (2, 93, 0),
+    "version": (1, 1, 0),
+    "blender": (4, 0, 0),
     "location": "Graph Editor - Dope Sheet - Timeline - 3D View - sidebar and menu bar",
-    # "warning": "This addon is still in development.",
     "category": "Animation",
     "doc_url": "https://aresdevo.github.io/animaide/",
-    "tracker_url": "https://github.com/aresdevo/animaide/issues"
+    "tracker_url": "https://github.com/cl3m3c7/animaide/issues"
 }
 
 import bpy
